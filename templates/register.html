@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card p-4">
+      <h4 class="mb-3">Register</h4>
+      <form method="post">
+        <input class="form-control mb-2" name="email" placeholder="Email" required>
+        <input class="form-control mb-2" name="password" type="password" placeholder="Password" required>
+
+        <label class="form-label mt-2">Role</label>
+        <select class="form-select mb-3" name="role">
+          <option value="customer">Customer</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <button class="btn btn-success w-100">Create Account</button>
+      </form>
+      <div class="muted mt-3">Already have an account? <a href="/login">Login</a></div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

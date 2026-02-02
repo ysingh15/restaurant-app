@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h4 class="mb-3">My Orders</h4>
+
+{% if not orders %}
+<div class="card p-3">
+  <p class="mb-0">No orders yet.</p>
+</div>
+{% else %}
+<ul class="list-group">
+  {% for o in orders %}
+    <li class="list-group-item">
+      <div class="fw-bold">Order #{{ o.id }}</div>
+      <div class="muted">Status: {{ o.status }}</div>
+      <div class="muted">Created: {{ o.created_at }}</div>
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

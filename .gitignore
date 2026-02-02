@@ -1,0 +1,14 @@
+﻿__pycache__/
+*.pyc
+
+venv/
+.venv/
+
+.env
+
+# Local DB (don’t commit)
+local.db
+
+# Google credentials (NEVER commit)
+serviceAccountKey.json
+*.json

@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h4 class="mb-3 glow">Your Cart</h4>
+
+{% if not lines %}
+  <div class="card p-3">
+    <p class="mb-0">Cart is empty. Go to <a href="/menu">Menu</a>.</p>
+  </div>
+{% else %}
+  <div class="card p-3">
+    <table class="table align-middle mb-3">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th style="width: 180px;">Quantity</th>
+          <th style="width: 140px;">Line total</th>
+          <th style="width: 120px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for l in lines %}
+        <tr>
+          <td>{{ l.item.name }}</td>
+
+          <td>
+            <div class="d-flex align-items-center gap-2">
+              <form method="post" action="/cart/update/{{ l.item.id }}">
+                <input type="hidden" name="action" value="dec">
+                <button class="btn btn-outline-light btn-sm" type="submit">−</button>
+              </form>
+
+              <div class="fw-bold">{{ l.qty }}</div>
+
+              <form method="post" action="/cart/update/{{ l.item.id }}">
+                <input type="hidden" name="action" value="inc">
+                <button class="btn btn-outline-light btn-sm" type="submit">+</button>
+              </form>
+            </div>
+          </td>
+
+          <td>£{{ "%.2f"|format(l.line_total) }}</td>
+
+          <td>
+            <form method="post" action="/cart/remove/{{ l.item.id }}">
+              <button class="btn btn-outline-light btn-sm" type="submit">Remove</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <h5 class="mb-0">Total: £{{ "%.2f"|format(total) }}</h5>
+
+      <form method="get" action="/checkout" class="ms-auto">
+        <button class="btn btn-success">
+          Proceed to Checkout
+        </button>
+      </form>
+    </div>
+
+  </div>
+{% endif %}
+
+{% endblock %}

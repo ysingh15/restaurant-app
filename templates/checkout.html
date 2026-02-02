@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h4 class="mb-3 glow">Checkout</h4>
+
+<div class="row g-3">
+  <div class="col-lg-7">
+    <div class="card p-3">
+      <h5 class="mb-3">Delivery details (UK)</h5>
+
+      <form method="post" action="/checkout" class="row g-3">
+        <div class="col-12">
+          <label class="form-label">Full name</label>
+          <input class="form-control" name="full_name"
+                 value="{{ data.get('full_name','') }}"
+                 placeholder="e.g. Yuvraj Singh" required>
+        </div>
+
+        <div class="col-12">
+          <label class="form-label">Phone number</label>
+          <input class="form-control" name="phone"
+                 value="{{ data.get('phone','') }}"
+                 placeholder="e.g. 07xxx xxxxxx" required>
+        </div>
+
+        <div class="col-12">
+          <label class="form-label">Address line 1</label>
+          <input class="form-control" name="address1"
+                 value="{{ data.get('address1','') }}"
+                 placeholder="House number + Street" required>
+        </div>
+
+        <div class="col-12">
+          <label class="form-label">Address line 2 (optional)</label>
+          <input class="form-control" name="address2"
+                 value="{{ data.get('address2','') }}"
+                 placeholder="Flat / Apartment / Building">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Town / City</label>
+          <input class="form-control" name="city"
+                 value="{{ data.get('city','') }}"
+                 placeholder="e.g. Bristol" required>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Postcode</label>
+          <input class="form-control" name="postcode"
+                 value="{{ data.get('postcode','') }}"
+                 placeholder="e.g. BS1 5AH" required>
+        </div>
+
+        <div class="col-12 d-grid">
+          <button class="btn btn-success btn-lg" type="submit">
+            Continue to Payment
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-lg-5">
+    <div class="card p-3">
+      <h5 class="mb-3">Order summary</h5>
+      <p class="muted mb-2">You’ll confirm payment on the next page.</p>
+      <a class="btn btn-outline-light w-100" href="/cart">Back to cart</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

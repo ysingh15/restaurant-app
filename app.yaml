@@ -1,0 +1,15 @@
+runtime: python312
+entrypoint: gunicorn -b :$PORT app:app
+
+env_variables:
+  # Security: use a long random string (min 32 chars)
+  FLASK_SECRET_KEY: "CHANGE_ME_TO_A_LONG_RANDOM_SECRET"
+
+  # Needed for Secret Manager helper in routes_web.py
+  GOOGLE_CLOUD_PROJECT: "restaurant-receipts-native"
+
+  # SQL database config
+  DB_USER: "postgres"
+  DB_PASS: "your_password"
+  DB_NAME: "restaurantdb"
+  CLOUD_SQL_CONNECTION_NAME: "YOUR_PROJECT:REGION:INSTANCE"

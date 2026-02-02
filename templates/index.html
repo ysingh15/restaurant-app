@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="hero">
+  <h2 class="mb-2">Order food fast 🍽️</h2>
+  <p class="muted mb-3">Login, browse the menu, add items to cart, and place orders.</p>
+
+  <div class="d-flex gap-2 flex-wrap">
+    <a class="btn btn-primary" href="/menu">Browse Menu</a>
+    {% if not session.get("user_id") %}
+      <a class="btn btn-outline-light" href="/register">Create Account</a>
+      <a class="btn btn-outline-light" href="/login">Login</a>
+    {% endif %}
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-4 mb-3">
+    <div class="card p-3">
+      <div class="fw-bold">Customer</div>
+      <div class="muted">Browse menu, add to cart, place orders.</div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <div class="card p-3">
+      <div class="fw-bold">Admin</div>
+      <div class="muted">Manage menu items from the Admin page.</div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <div class="card p-3">
+      <div class="fw-bold">Cloud-ready</div>
+      <div class="muted">SQLite locally → Cloud SQL + Firestore on Google Cloud.</div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
